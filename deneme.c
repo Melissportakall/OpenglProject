@@ -18,72 +18,149 @@ typedef struct koordinatlar
 } t_koordinatlar;
 struct koordinatlar x;
 char satir[100];
-int corner = 1;
+int corner = 1,corner2 = 1;
+int type;
 int line = 0;
 int alan = 0;
 int fcor = 0;
-
+int sondaj;
+int platform;
 //int type = x.size - corner;
 int type;
 void karebulma(int alan)
 {
     int i = 0;
-    int a, b, c, d, e;
+    int a=0, b=0, c=0, d=0, e=0;
+    int type = x.size - corner2; //corner yanlis!!!
     while (alan > 0)
     {
         if (alan > 256)
         {
-            alan = alan % 256;
-            e = alan / 256;
-            printf("%d", a);
+            int i, j;
+            int boyut = 16;
+            
+            for (i = 0; i < x.size; i++) {
+                for (j = 0; j < x.size; j++) {
+                    if (alan >= (boyut * boyut)) {
+                        glColor3f(0.0, 0.0, 1.0); // Mavi rengi ayarla
+                        glBegin(GL_QUADS);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor) + 1) * boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor)+ 1) * boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glEnd();
+                        glFlush();
+                        alan -= (boyut * boyut);
+                    }
+                    a++;
+                }
+            }
         }
         else if (alan > 64 && alan<256)
         {
-            alan = alan % 64;
-            d = alan / 64;
-            printf("%d", a);
+            int i, j;
+            int boyut = 8;
+
+            for (i = 0; i < x.size; i++) {
+                for (j = 0; j < x.size; j++) {
+                    if (alan >= (boyut * boyut)) {
+                        glColor3f(0.0, 0.0, 1.0); // Mavi rengi ayarla
+                        glBegin(GL_QUADS);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor) + 1) * boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor)+ 1) * boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glEnd();
+                        glFlush();
+                        alan -= (boyut * boyut);
+                    }
+                    b++;
+                }
+            }
+            
         }
         else if (alan > 16 && alan<64)
         {
-            alan = alan % 16;
-            c = alan / 16;
-            printf("%d", a);
+            int i, j;
+            int boyut = 4;
+
+            for (i = 0; i < x.size; i++) {
+                for (j = 0; j < x.size; j++) {
+                    if (alan >= (boyut * boyut)) {
+                        glColor3f(0.0, 0.0, 1.0); // Mavi rengi ayarla
+                        glBegin(GL_QUADS);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor) + 1) * boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor)+ 1) * boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glEnd();
+                        glFlush();
+                        alan -= (boyut * boyut);
+                    }
+                }
+                c++;
+            }
+            
         }
         else if (alan > 4 && alan<16)
         {
-            alan = alan % 4;
-            b = alan / 4;
-            printf("%d", a);
+            int i, j;
+            int boyut = 2;
+
+            for (i = 0; i < x.size; i++) {
+                for (j = 0; j < x.size; j++) {
+                    if (alan >= (boyut * boyut)) {
+                        glColor3f(0.0, 0.0, 1.0); // Mavi rengi ayarla
+                        glBegin(GL_QUADS);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor) + 1) * boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor)+ 1) * boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glEnd();
+                        glFlush();
+                        alan -= (boyut * boyut);
+                    }
+                }
+                d++;
+            }
+            
         }
         else if (alan > 1&& alan<4)
         {
-            alan = alan % 1;
-            a = alan / 1;
-            printf("%d", a);
-        }
-        else
-            printf("hatalı değer");
+            int i, j;
+            int boyut = 1;
 
+            for (i = 0; i < x.size; i++) {
+                for (j = 0; j < x.size; j++) {
+                    if (alan >= (boyut * boyut)) {
+                        glColor3f(0.0, 0.0, 1.0); // Mavi rengi ayarla
+                        glBegin(GL_QUADS);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor) + 1) * boyut, x.y[i + fcor] + (j + fcor) * boyut);
+                        glVertex2f(x.x[i + fcor] + ((j + fcor)+ 1) * boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glVertex2f(x.x[i + fcor] + (j + fcor)* boyut, x.y[i + fcor] + ((j+fcor) + 1) * boyut);
+                        glEnd();
+                        glFlush();
+                        alan -= (boyut * boyut);
+                    }
+                }
+            }
+            e++;
+        }
     }
     int toplam = a + b + c + d + e;
+    int platform_maliyeti = platform * toplam;
+    int sondaj_maliyeti = sondaj * toplam;
+    int toplam_maliyet = platform_maliyeti + sondaj_maliyeti;
+    printf("Platform maliyeti:%d", platform_maliyeti);
+    printf("Sondaj maliyeti:%d", sondaj_maliyeti);
+    printf("Toplam maliyeti:%d", toplam_maliyet);
+}
 
-}
-/*void alanyazdırma()
-{
-    printf("Cokgenin alani: %d\n", alan);
-    printf("Rezerv alanı:%d\n", alan * 10);
-    //karebulma(alan);
-}
-*/
 int alan_bulma(int type)
 {
-    alan = 0;
-    if (type == 3)
-    {   
-        alan = 0.5 * fabs(x.x[fcor] * (x.y[fcor + 1] - x.y[fcor + 2]) + x.x[fcor + 1] * (x.y[fcor + 2] - x.y[fcor]) + x.x[fcor + 2] * (x.y[fcor] - x.y[fcor + 1]));
-    }
-    
-    else
+    printf("MELLIIISS\n");
+    if(type > 3)
     {
         //Shoelace Formülü'nü kullanarak çokgenin alanını bulduk.
         int temp;
@@ -105,9 +182,13 @@ int alan_bulma(int type)
         // Mutlak değeri alıp ve 0.5 ile çarptık
         alan = 0.5 * fabs(alan);
     }
-    return (alan);
-
+    else if (type == 3)
+    {
+        alan = 0.5 * fabs(x.x[fcor] * (x.y[fcor + 1] - x.y[fcor + 2]) + x.x[fcor + 1] * (x.y[fcor + 2] - x.y[fcor]) + x.x[fcor + 2] * (x.y[fcor] - x.y[fcor + 1]));
+    }
+    return(alan);
 }
+
 int flag = 1;
 void drawSekil(void)
 {
@@ -236,6 +317,7 @@ void reshape(int w, int h) {
 }
 
 int main(int argc, char** argv) {
+    
     FILE* dosya = fopen("indirilen_veri.txt", "r"); // Okunacak dosyayı açın
     if (dosya == NULL) {
         perror("Dosya açma hatası");
@@ -252,7 +334,10 @@ int main(int argc, char** argv) {
         x.satirSayisi++;
     }
     line = getlineee();
-
+    printf("birim sondaj maliyetini giriniz:");
+    scanf("%d",&sondaj);
+    printf("birim platform maliyetini giriniz:");
+    scanf("%d",&platform);
     glutInit(&argc, argv);
     //glClear(GL_COLOR_BUFFER_BIT);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
