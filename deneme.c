@@ -159,7 +159,7 @@ void karebulma(int alan)
 
 int alan_bulma(int type)
 {
-    printf("MELLIIISS\n");
+    
     if(type > 3)
     {
         //Shoelace Formülü'nü kullanarak çokgenin alanını bulduk.
@@ -198,7 +198,7 @@ void drawSekil(void)
     // Dörtgeni çiz
     type = x.size - corner;
     fcor = corner;
-    //printf("\n type %d\n", type);
+   
     if (type == 4) {
         glBegin(GL_QUADS);
         while (corner <= x.size) {
@@ -219,8 +219,7 @@ void drawSekil(void)
     glEnd();
     glFlush();
     
-    //alan_bulma(type);
-    printf("\nfcor: %d\n", fcor);
+    
     if(flag == 1) {
         fcor--;
         flag = 0;
@@ -228,8 +227,7 @@ void drawSekil(void)
     int c = alan_bulma(type); // Alan hesaplamasını bir kez yap
     printf("\nCokgenin alani: %d\n", c);
     printf("Rezerv alani:%d\n", c * 10);
-    printf("deneme %d", type);
-    printf("deneme %d\n", corner);
+
     c = 0;
 }
 int getlineee(void) {
@@ -303,7 +301,7 @@ void display() {
     //Grid cizimi
     drawGrid();
     glFlush();
-    //alanyazdırma();    
+    
 
 }
 
@@ -317,7 +315,22 @@ void reshape(int w, int h) {
 }
 
 int main(int argc, char** argv) {
-    
+/*       // Çekeceğiniz URL'yi ve hedef dosyanın adını belirtin
+    const char *url = "http://bilgisayar.kocaeli.edu.tr/prolab1/prolab1.txt";
+    const char *dosyaAdi = "indirilen_veri.txt";
+
+    // `curl` komutunu kullanarak verileri çekme
+    char komut[256];
+    snprintf(komut, sizeof(komut), "curl -o %s %s", dosyaAdi, url);
+    int sonuc = system(komut);
+
+    if (sonuc == 0) {
+        printf("Veriler başarıyla çekildi ve '%s' dosyasına kaydedildi.\n", dosyaAdi);
+    } else {
+        printf("Veriler çekilirken bir hata oluştu.\n");
+    }
+ */
+
     FILE* dosya = fopen("indirilen_veri.txt", "r"); // Okunacak dosyayı açın
     if (dosya == NULL) {
         perror("Dosya açma hatası");
