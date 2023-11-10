@@ -132,53 +132,12 @@ void drawForm(void)
 
         }
     }
-    else if (type == 5)
-    {
+    else if (type >= 5 && type <= 9) {
         glBegin(GL_POLYGON);
         while (corner <= x.size) {
             glVertex2f(x.x[corner], x.y[corner]);
             corner++;
         }
-    }
-    else if (type == 6)
-    {
-        glBegin(GL_POLYGON);
-        while (corner <= x.size) {
-            glVertex2f(x.x[corner], x.y[corner]);
-            corner++;
-        }
-
-
-    }
-    else if (type == 7)
-    {
-        glBegin(GL_POLYGON);
-        while (corner <= x.size) {
-            glVertex2f(x.x[corner], x.y[corner]);
-            corner++;
-        }
-
-
-    }
-    else if (type == 8)
-    {
-        glBegin(GL_POLYGON);
-        while (corner <= x.size) {
-            glVertex2f(x.x[corner], x.y[corner]);
-            corner++;
-        }
-
-
-    }
-    else if (type == 9)
-    {
-        glBegin(GL_POLYGON);
-        while (corner <= x.size) {
-            glVertex2f(x.x[corner], x.y[corner]);
-            corner++;
-        }
-
-
     }
     
     glEnd();
